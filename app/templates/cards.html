@@ -2,41 +2,40 @@
 
 {% block content %}
 
-  <div class="container">
-        <h1>Введите данные пользвателя</h1>
-        #создает форму с методом POST, чтобы отправлять данные из этой формы
+<div class="container mt-5">
+        <h3 class="mb-4">Введите данные пользователя</h3>
         <form method="POST" action="/">
-            <div>
+            <div class="form-group">
                 <label for="name">Имя:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
-            <div >
-                <label for="age">Текст поста:</label>
-                <input id="age" name="age" required>
+            <div class="form-group">
+                <label for="age">Возраст:</label>
+                <input type="text" class="form-control" id="age" name="age" required>
             </div>
-            <div >
-                <label for="city">Текст поста:</label>
-                <input id="city" name="city" required>
+            <div class="form-group">
+                <label for="city">Город:</label>
+                <input type="text" class="form-control" id="city" name="city" required>
             </div>
-            <div >
-                <label for="hobby">Текст поста:</label>
-                <input id="hobby" name="hobby" required>
+            <div class="form-group">
+                <label for="hobby">Хобби:</label>
+                <input type="text" class="form-control" id="hobby" name="hobby" required>
             </div>
-            <button type="submit" >Отправить пост</button>
+            <button type="submit" class="btn btn-primary">Отправить пост</button>
         </form>
-        <hr>
-    #использует цикл for, чтобы иметь возможность публиковать посты
-        <h2>Список пользователей</h2>
+        <hr class="my-4">
+        <h2 class="mb-4">Список пользователей</h2>
         <div class="row">
             {% for user in users %}
-                #создает отдельный div, внутри которого записываются карточки пользователей
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2">
                 <div class="card">
-                    <img src="/static/user.png" alt="userphoto">
-                    <h5>{{ user.name }}</h5>
-                    <p>{{ user.age }}</p>
-                    <p>{{ user.city }}</p>
-                    <p>{{ user.hobby }}</p>
+                    <p style="text-align: center"><img src="/static/img/user.png" alt="userphoto" class="card-img-top" style="max-width: 250px"></p>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.name }}</h5>
+                        <p class="card-text">Возраст: {{ user.age }}</p>
+                        <p class="card-text">Город: {{ user.city }}</p>
+                        <p class="card-text">Хобби: {{ user.hobby }}</p>
+                    </div>
                 </div>
             </div>
             {% endfor %}
